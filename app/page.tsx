@@ -1,6 +1,14 @@
+"use client";
+import { useStoreModel } from "@/hooks/use-store-modal";
+import { useEffect } from "react";
+export default function SetupPage() {
+  const OnOpen = useStoreModel((state) => state.OnOpen);
+  const isOpen = useStoreModel((state) => state.isOpen);
 
-export default function Setuppage() {
-  return (
-   <h1>Hello next js</h1>
-  );
+  useEffect(() => {
+    if (!isOpen) {
+      OnOpen();
+    }
+  }, [isOpen, OnOpen]);
+  return <>Root page</>;
 }
